@@ -5,7 +5,7 @@ Creates a Shipyard Docker image with data separated from the application folder.
 Based on https://github.com/ehazlett/shipyard/blob/master/Dockerfile
 
 ###Install
-`docker build -t bisrael/shipyard github.com/bisrael8191/Dockerfiles/tree/shipyard`
+`docker build -t bisrael/shipyard github.com/bisrael8191/docker-shipyard`
 
 ###Run
 `docker run -d -p 8000:8000 bisrael/shipyard`
