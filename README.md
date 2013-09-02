@@ -8,12 +8,20 @@ Based on https://github.com/ehazlett/shipyard/blob/master/Dockerfile
 `docker build -t bisrael/shipyard github.com/bisrael8191/docker-shipyard`
 
 ###Run
-`docker run -d -p 8000:8000 bisrael/shipyard`
-
-###Notes
-Haven't figured out how to store the database in a volume yet. It should be something like:
+Make sure host data folder '/var/data/shipyard' exists before starting the container.
 
 `docker run -d -v /var/data/shipyard:/opt/data/shipyard:rw -p 8000:8000 bisrael/shipyard`
 
-The database is written there, but it's reset so the login information is gone. Possibly submit
-a pull request to set the default admin/shipyard login when DB is first created.
+Follow the instructions in the notes, then login using 'admin:shipyard'.
+
+###Notes
+The first time the container is run, the database generated during the install needs
+to be copied to the host filesystem in order to log in. So first, start the container
+with the run command. Then copy the shipyard.db file using:
+
+`docker cp CONTAINER_ID:/opt/apps/shipyard/shipyard.db /var/data/shipyard/`
+
+Then stop and restart the shipyard container. You should be able to login and all
+data will be stored in the volume, allowing the container to be restarted.
+
+Possibly submit a pull request to set the default login when DB is first created.

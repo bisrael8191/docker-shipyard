@@ -46,9 +46,6 @@ RUN (cd /opt/apps/shipyard && /opt/ve/shipyard/bin/python manage.py syncdb --noi
 RUN (cd /opt/apps/shipyard && /opt/ve/shipyard/bin/python manage.py migrate)
 RUN (cd /opt/apps/shipyard && /opt/ve/shipyard/bin/python manage.py update_admin_user --username=admin --password=shipyard)
 
-# Set up a volume for the shipyard data (doesn't work yet, use docker run -v HOSTDIR:/opt/data/shipyard:rw)
-#VOLUME ["/opt/data/shipyard"]
-
 # Port to open internally (use docker -p PORTNUM to expose it externally)
 EXPOSE 8000
 
