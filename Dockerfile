@@ -37,7 +37,7 @@ RUN cp /opt/apps/shipyard/.docker/supervisor.conf /opt/supervisor.conf
 RUN cp /opt/apps/shipyard/.docker/run.sh /usr/local/bin/run
 
 # Default the DB_NAME to a separate data folder
-RUN mkdir /opt/data/shipyard
+RUN mkdir -p /opt/data/shipyard
 ENV DB_NAME /opt/data/shipyard/shipyard.db
 
 # Configure shipyard virtualenv
